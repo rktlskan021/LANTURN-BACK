@@ -2,7 +2,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import JSONFormatter
 from get_video_info import extract_video_id
 
-video_id = extract_video_id("https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi")
+video_id = extract_video_id("https://www.youtube.com/watch?v=SAhUc9ywIiw&t=26s")
 
 # Must be a single transcript.
 transcript = YouTubeTranscriptApi.get_transcript(video_id)

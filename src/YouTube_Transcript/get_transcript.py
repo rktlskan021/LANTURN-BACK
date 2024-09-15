@@ -38,6 +38,6 @@ if __name__ == "__main__":
     youtube_url = "https://www.youtube.com/watch?v=aircAruvnKk&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
 
     # youtube_transcripts 폴더 경로
-    output_folder = os.path.join("./src/", "youtube_transcripts")
+    output_folder = os.path.join("./src/YouTube_Transcript/", "youtube_transcripts")
     save_transcript_to_file(youtube_url, output_folder)
 
