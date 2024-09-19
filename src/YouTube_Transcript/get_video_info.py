@@ -15,7 +15,9 @@ def extract_video_id(url):
 
 def get_video_title(url):
     yt = YouTube(url)
-    return yt.title
+    title = yt.title
+    safe_title = re.sub(r'[\\/*?:"<>|]', "", title)
+    return safe_title
 
 
 if __name__ == "__main__":
