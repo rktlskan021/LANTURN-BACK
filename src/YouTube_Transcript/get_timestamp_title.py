@@ -54,6 +54,4 @@ if __name__ == "__main__":
     
     timestamps = extract_timestamps_from_description(video_id, api_key)
     print(timestamps)
-    
-    # for time, title in timestamps:
-    #     print(f"{time} - {title}")
+
