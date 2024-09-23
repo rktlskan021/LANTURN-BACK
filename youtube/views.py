@@ -5,6 +5,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from urllib.parse import urlparse, parse_qs
 from .models import YouTubeLink, Transcript
 from .serializers import YouTubeLinkSerializer
+import re
 
 class YouTubeTranscriptAPIView(APIView):
     
@@ -46,15 +47,10 @@ class YouTubeTranscriptAPIView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-    def extract_video_id(self, url):
-        """
-        유튜브 링크에서 동영상 ID를 추출하는 함수
-        """
-        parsed_url = urlparse(url)
-        if parsed_url.hostname in ['www.youtube.com', 'youtube.com']:
-            video_id = parse_qs(parsed_url.query).get('v')
-            if video_id:
-                return video_id[0]
-        elif parsed_url.hostname == 'youtu.be':  # 단축 URL 처리
-            return parsed_url.path[1:]
-        return None
+    def extract_video_id(url):
+        # 유튜브 URL에서 비디오 ID 추출
+        video_id_match = re.search(r"(?:v=|/)([0-9A-Za-z_-]{11}).*", url)
+        if video_id_match:
+            return video_id_match.group(1)
+        else:
+            raise ValueError("Invalid YouTube URL")
