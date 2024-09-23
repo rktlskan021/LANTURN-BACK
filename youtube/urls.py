@@ -1,10 +1,7 @@
 from django.urls import path, include, re_path
 from rest_framework import routers
-from .views import LinkViewSet
-
-router = routers.DefaultRouter()
-router.register(r'link', LinkViewSet)
+from .views import YouTubeTranscriptAPIView
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('get-transcript/', YouTubeTranscriptAPIView.as_view())
 ]
